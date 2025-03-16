@@ -2,6 +2,7 @@ package com.example.amazon_clone.Controller;
 
 import com.example.amazon_clone.Api.ApiResponse;
 import com.example.amazon_clone.Model.MerchantStock;
+import com.example.amazon_clone.Model.Product;
 import com.example.amazon_clone.Service.MerchantStockService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -49,5 +50,12 @@ public class MerchantStockController {
     public ResponseEntity deleteMerchantStock(@PathVariable String id){
         merchantStockService.deleteMerchantStock(id);
         return ResponseEntity.status(200).body(new ApiResponse("Deleted Merchant Stock, Thank you"));
+    }
+
+    //ADD STOCK
+    @PutMapping("/addStock/{productId}/{merchantId}/{add}")
+    public ResponseEntity addStock(@PathVariable String productId, @PathVariable String merchantId, @PathVariable int add ){
+        merchantStockService.addStock(productId,merchantId,add);
+        return ResponseEntity.status(200).body(new ApiResponse("Stock updated, thank you"));
     }
 }
