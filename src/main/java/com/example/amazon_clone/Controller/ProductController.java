@@ -35,4 +35,22 @@ public class ProductController {
         return ResponseEntity.status(200).body(new ApiResponse("add"));
      }
 
+     //UPDATE
+    @PutMapping("/update/{id}")
+    public ResponseEntity updateProduct(@PathVariable String id,@RequestBody @Valid Product product , Errors errors){
+        if(errors.hasErrors()){
+            String message = errors.getFieldError().getDefaultMessage();
+            return ResponseEntity.status(400).body(message);
+        }
+        productService.updateProduct(id, product);
+        return ResponseEntity.status(200).body(new ApiResponse("Updated Product, Thank you"));
+    }
+
+    //DELETE
+    @DeleteMapping("del/{id}")
+    public ResponseEntity deleteProduct(@PathVariable String id){
+        productService.deleteProduct(id);
+        return ResponseEntity.status(200).body(new ApiResponse("Deleted Product, Thank you"));
+    }
+
 }

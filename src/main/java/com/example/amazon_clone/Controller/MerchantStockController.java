@@ -33,4 +33,14 @@ public class MerchantStockController {
         merchantStockService.addMerchantStock(merchantStock);
         return ResponseEntity.status(200).body(new ApiResponse("Added Merchant Stock, Thank you"));
     }
+    //UPDATE
+    @PutMapping("/update/{id}")
+    public ResponseEntity updateMerchantStock(@PathVariable String id, @RequestBody @Valid MerchantStock merchantStock,Errors errors){
+        if(errors.hasErrors()){
+            String message = errors.getFieldError().getDefaultMessage();
+            return ResponseEntity.status(400).body(message);
+        }
+        merchantStockService.updateMerchantStock(id, merchantStock);
+        return ResponseEntity.status(200).body(new ApiResponse("Updated Merchant Stock, Thank you"));
+    }
 }

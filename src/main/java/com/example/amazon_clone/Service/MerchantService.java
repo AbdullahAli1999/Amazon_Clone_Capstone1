@@ -23,4 +23,15 @@ public class MerchantService {
         return true;
     }
 
+    //UPDATE
+    public boolean updateMerchant(String id, Merchant merchant){
+        for (int i = 0; i < merchants.size(); i++) {
+            if(merchants.get(i).getId().equalsIgnoreCase(merchant.getId())){
+                merchants.set(i,merchant);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

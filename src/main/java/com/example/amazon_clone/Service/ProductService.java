@@ -25,4 +25,26 @@ public class ProductService {
         products.add(product);
         return true;
     }
+
+    //UPDATE
+    public boolean updateProduct(String id, Product product){
+        for (int i = 0; i < products.size(); i++) {
+            if(products.get(i).getId().equalsIgnoreCase(product.getId())){
+                products.set(i,product);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //DELETE
+    public boolean deleteProduct(String id){
+        for (int i = 0; i < products.size(); i++) {
+            if(products.get(i).getId().equalsIgnoreCase(id)){
+                products.remove(products.get(i));
+                return true;
+            }
+        }
+        return false;
+    }
 }

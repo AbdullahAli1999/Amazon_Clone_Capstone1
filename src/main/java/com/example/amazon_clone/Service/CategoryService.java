@@ -23,4 +23,15 @@ public class CategoryService {
         categories.add(category);
         return true;
     }
+
+    //UPDATE
+    public boolean updateCategory(String id,Category category){
+        for (int i = 0; i < categories.size(); i++) {
+            if(categories.get(i).getId().equalsIgnoreCase(category.getId())){
+                categories.set(i,category);
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -22,4 +22,15 @@ public class MerchantStockService {
         merchantStocks.add(merchantStock);
         return true;
     }
+
+    //UPDATE
+    public boolean updateMerchantStock(String id,MerchantStock merchantStock){
+        for (int i = 0; i < merchantStocks.size(); i++) {
+            if(merchantStocks.get(i).getMerchantId().equalsIgnoreCase(merchantStock.getId())){
+                merchantStocks.set(i,merchantStock);
+                return true;
+            }
+        }
+        return false;
+    }
 }

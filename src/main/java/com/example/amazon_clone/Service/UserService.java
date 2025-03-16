@@ -26,4 +26,15 @@ public class UserService {
         users.add(user);
         return true;
     }
+
+    //UPDATE
+    public boolean updateUser(String id,User user){
+        for (int i = 0; i < users.size(); i++) {
+            if(users.get(i).getId().equalsIgnoreCase(user.getId())){
+                users.set(i,user);
+                return true;
+            }
+        }
+        return false;
+    }
 }

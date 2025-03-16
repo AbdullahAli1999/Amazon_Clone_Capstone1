@@ -35,4 +35,15 @@ public class CategoryController {
         categoryService.addCategory(category);
         return ResponseEntity.status(200).body(new ApiResponse("Added category , Thank you"));
     }
+
+    //UPDATE
+    @PutMapping("/update/{id}")
+    public ResponseEntity updateCategory(@PathVariable String id,@RequestBody @Valid Category category,Errors errors){
+        if(errors.hasErrors()){
+            String message = errors.getFieldError().getDefaultMessage();
+            return ResponseEntity.status(400).body(message);
+        }
+        categoryService.updateCategory(id,category);
+        return ResponseEntity.status(200).body(new ApiResponse("Updated category , Thank you"));
+    }
 }

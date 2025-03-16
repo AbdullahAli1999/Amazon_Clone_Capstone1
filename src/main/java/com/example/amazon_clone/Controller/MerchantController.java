@@ -34,4 +34,15 @@ public class MerchantController {
         merchantService.addMerchant(merchant);
         return ResponseEntity.status(200).body(new ApiResponse("Added Merchant, Thank you"));
     }
+
+    //UPDATE
+    @PutMapping("/update/{id}")
+    public ResponseEntity updateMerchant(@PathVariable String id,@RequestBody @Valid Merchant merchant, Errors errors){
+        if(errors.hasErrors()){
+            String message = errors.getFieldError().getDefaultMessage();
+            return ResponseEntity.status(400).body(message);
+        }
+        merchantService.updateMerchant(id, merchant);
+        return ResponseEntity.status(200).body(new ApiResponse("Updated Merchant, Thank you"));
+    }
 }
