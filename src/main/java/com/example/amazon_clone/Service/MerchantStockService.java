@@ -26,7 +26,7 @@ public class MerchantStockService {
     //UPDATE
     public boolean updateMerchantStock(String id,MerchantStock merchantStock){
         for (int i = 0; i < merchantStocks.size(); i++) {
-            if(merchantStocks.get(i).getMerchantId().equalsIgnoreCase(merchantStock.getId())){
+            if(merchantStocks.get(i).getId().equalsIgnoreCase(merchantStock.getId())){
                 merchantStocks.set(i,merchantStock);
                 return true;
             }
@@ -37,7 +37,7 @@ public class MerchantStockService {
     //DELETE
     public boolean deleteMerchantStock(String id){
         for (int i = 0; i < merchantStocks.size(); i++) {
-            if(merchantStocks.get(i).getMerchantId().equalsIgnoreCase(id)){
+            if(merchantStocks.get(i).getId().equalsIgnoreCase(id)){
                 merchantStocks.remove(merchantStocks.get(i));
                 return true;
             }
