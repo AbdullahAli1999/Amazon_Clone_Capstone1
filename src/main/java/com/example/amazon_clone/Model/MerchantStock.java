@@ -20,4 +20,5 @@ public class MerchantStock {
     //@Size(min = 10,message = "have to be more than 10 at start")
     @Min(value = 10, message = "have to be more than 10 at start")
     private int stock;
+
 }
