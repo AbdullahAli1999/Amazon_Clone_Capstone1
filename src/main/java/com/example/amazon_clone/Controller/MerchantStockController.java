@@ -43,4 +43,11 @@ public class MerchantStockController {
         merchantStockService.updateMerchantStock(id, merchantStock);
         return ResponseEntity.status(200).body(new ApiResponse("Updated Merchant Stock, Thank you"));
     }
+
+    //DELETE
+    @DeleteMapping("/del/{id}")
+    public ResponseEntity deleteMerchantStock(@PathVariable String id){
+        merchantStockService.deleteMerchantStock(id);
+        return ResponseEntity.status(200).body(new ApiResponse("Deleted Merchant Stock, Thank you"));
+    }
 }

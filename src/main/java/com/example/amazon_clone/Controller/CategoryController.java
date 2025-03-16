@@ -46,4 +46,11 @@ public class CategoryController {
         categoryService.updateCategory(id,category);
         return ResponseEntity.status(200).body(new ApiResponse("Updated category , Thank you"));
     }
-}
+    //DELETE
+    @DeleteMapping("/del/{id}")
+    public ResponseEntity deleteCategory(@PathVariable String id){
+        categoryService.deleteCategory(id);
+        return ResponseEntity.status(200).body(new ApiResponse("Deleted Category , Thank you"));
+        }
+    }
+

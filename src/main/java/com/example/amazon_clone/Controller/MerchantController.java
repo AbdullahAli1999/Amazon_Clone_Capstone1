@@ -45,4 +45,11 @@ public class MerchantController {
         merchantService.updateMerchant(id, merchant);
         return ResponseEntity.status(200).body(new ApiResponse("Updated Merchant, Thank you"));
     }
+
+    //DELETE
+    @DeleteMapping("/del/{id}")
+    public ResponseEntity deleteMerchant(@PathVariable String id){
+        merchantService.deleteMerchant(id);
+        return ResponseEntity.status(200).body(new ApiResponse("Deleted Merchant, Thank you"));
+    }
 }

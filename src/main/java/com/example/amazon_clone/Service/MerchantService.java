@@ -33,5 +33,15 @@ public class MerchantService {
         }
         return false;
     }
+    //DELETE
+    public boolean deleteMerchant(String id){
+        for (int i = 0; i < merchants.size(); i++) {
+            if(merchants.get(i).getId().equalsIgnoreCase(id)){
+                merchants.remove(merchants.get(i));
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

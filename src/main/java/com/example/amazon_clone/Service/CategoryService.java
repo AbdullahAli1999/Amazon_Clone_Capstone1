@@ -34,4 +34,15 @@ public class CategoryService {
         }
         return false;
     }
+
+    //DELETE
+    public  boolean deleteCategory(String id){
+        for (int i = 0; i < categories.size(); i++) {
+            if(categories.get(i).getId().equalsIgnoreCase(id)){
+                categories.remove(categories.get(i));
+                return true;
+            }
+        }
+        return false;
+    }
 }

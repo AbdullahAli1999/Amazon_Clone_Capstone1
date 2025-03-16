@@ -37,4 +37,15 @@ public class UserService {
         }
         return false;
     }
+
+    //DELETE
+    public boolean deleteUser(String id){
+        for (int i = 0; i < users.size(); i++) {
+            if(users.get(i).getId().equalsIgnoreCase(id)){
+                users.remove(users.get(i));
+                return true;
+            }
+        }
+        return false;
+    }
 }

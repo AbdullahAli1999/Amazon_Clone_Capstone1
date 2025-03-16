@@ -46,4 +46,11 @@ public class UserController {
         return ResponseEntity.status(200).body(new ApiResponse("Updated product, Thank you"));
 
     }
+
+    //DELETE
+    @DeleteMapping("del/{id}")
+    public ResponseEntity deleteUser(@PathVariable String id){
+        userService.deleteUser(id);
+        return ResponseEntity.status(200).body(new ApiResponse("Deleted User , Thank you"));
+    }
 }

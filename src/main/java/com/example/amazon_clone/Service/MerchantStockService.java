@@ -33,4 +33,16 @@ public class MerchantStockService {
         }
         return false;
     }
+
+    //DELETE
+    public boolean deleteMerchantStock(String id){
+        for (int i = 0; i < merchantStocks.size(); i++) {
+            if(merchantStocks.get(i).getMerchantId().equalsIgnoreCase(id)){
+                merchantStocks.remove(merchantStocks.get(i));
+                return true;
+            }
+        }
+        return false;
+
+    }
 }
