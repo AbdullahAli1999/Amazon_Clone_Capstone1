@@ -44,4 +44,14 @@ public class MerchantService {
         return false;
     }
 
+    public Merchant getMerchantID(String id){
+        for (int i = 0; i < merchants.size(); i++) {
+            Merchant mid = merchants.get(i);
+            if(mid.getId().equalsIgnoreCase(id)){
+                return mid;
+            }
+        }
+        return null;
+    }
+
 }

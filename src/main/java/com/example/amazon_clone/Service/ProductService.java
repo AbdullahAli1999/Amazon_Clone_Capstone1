@@ -1,5 +1,6 @@
 package com.example.amazon_clone.Service;
 
+import com.example.amazon_clone.Api.ApiResponse;
 import com.example.amazon_clone.Model.Product;
 import org.springframework.stereotype.Service;
 
@@ -46,5 +47,15 @@ public class ProductService {
             }
         }
         return false;
+    }
+
+    public Product getProductID(String id){
+        for (int i = 0; i < products.size(); i++) {
+            Product pid = products.get(i);
+            if(pid.getId().equalsIgnoreCase(id)){
+                return pid;
+            }
+        }
+        return null;
     }
 }

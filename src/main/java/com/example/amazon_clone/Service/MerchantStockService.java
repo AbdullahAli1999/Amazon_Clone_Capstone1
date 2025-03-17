@@ -1,6 +1,8 @@
 package com.example.amazon_clone.Service;
 
+import com.example.amazon_clone.Model.Merchant;
 import com.example.amazon_clone.Model.MerchantStock;
+import com.example.amazon_clone.Model.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +20,20 @@ public class MerchantStockService {
     }
     //ADD
     public boolean addMerchantStock(MerchantStock merchantStock){
+            Product p = productService.getProductID(merchantStock.getProductId());
+            Merchant m = merchantService.getMerchantID(merchantStock.getMerchantId());
+
+
         for (int i = 0; i < merchantStocks.size(); i++) {
             if(merchantStocks.get(i).getId().equalsIgnoreCase(merchantStock.getId())){
                 return false;
             }
+
+        }if(p.getId().equalsIgnoreCase(merchantStock.getProductId()) && m.getId().equalsIgnoreCase(merchantStock.getMerchantId())){
+            merchantStocks.add(merchantStock);
+
         }
-        merchantStocks.add(merchantStock);
+       // merchantStocks.add(merchantStock);
         return true;
     }
 
@@ -59,5 +69,15 @@ public class MerchantStockService {
             }
         }
         return false;
+    }
+
+    public MerchantStock getMerchantId(String merchantId){
+        for (int i = 0; i < merchantStocks.size(); i++) {
+            MerchantStock s = merchantStocks.get(i);
+            if(s.getMerchantId().equalsIgnoreCase(merchantId)){
+                return s;
+            }
+        }
+        return null;
     }
 }

@@ -53,4 +53,10 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.status(200).body(new ApiResponse("Deleted User , Thank you"));
     }
+
+    @PutMapping("/buy/{userId}/{productId}/{merchantId}/{take}")
+    public ResponseEntity buyProduct(@PathVariable String productId,@PathVariable String userId, @PathVariable String merchantId,@PathVariable double take){
+        userService.buyProudct(userId,productId,merchantId,take);
+        return ResponseEntity.status(200).body(new ApiResponse("paid product , thank you"));
+    }
 }

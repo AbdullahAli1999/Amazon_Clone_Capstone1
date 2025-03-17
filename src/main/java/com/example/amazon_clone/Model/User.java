@@ -23,5 +23,5 @@ public class User {
     private String role;
     @NotNull(message = "the balance can not be null")
     @Positive(message = "just positive numbers<")
-    private int balance;
+    private double balance;
 }
