@@ -80,8 +80,31 @@ public class UserService {
             for (int j = 0; j < users.size(); j++) {
                 User balance = users.get(i);
                 if(price.getPrice() < balance.getBalance()){
-                    double newbalance =  balance.getBalance() - price.getPrice() ;
+                    double newbalance =  balance.getBalance() - price.getPrice() * take;
                     balance.setBalance(newbalance);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    //COUPON
+
+    public boolean putCoupon(String userID , String productId, double coupon){
+        ArrayList<Product> p = productService.getProducts();
+        Product pid = productService.getProductID(productId);
+        for (int i = 0; i < users.size(); i++) {
+            User userC = users.get(i);
+
+            for (int j = 0; j < p.size(); j++) {
+                Product prodC = p.get(j);
+
+                if(userC.getId().equalsIgnoreCase(userID) && prodC.getId().equalsIgnoreCase(productId)){
+                    double newPrice =prodC.getPrice() * (coupon/100) ;
+                    if(newPrice < 0) newPrice = 0;
+
+                    prodC.setPrice(newPrice);
                     return true;
                 }
             }

@@ -1,6 +1,7 @@
 package com.example.amazon_clone.Service;
 
 import com.example.amazon_clone.Model.Category;
+import com.example.amazon_clone.Model.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -44,5 +45,27 @@ public class CategoryService {
             }
         }
         return false;
+    }
+
+    //SEARCH BY CATEGORY
+    public ArrayList<Category> searchByCategory(String name){
+        ArrayList<Category> searchByCate = new ArrayList<>();
+        for (int i = 0; i < categories.size(); i++) {
+            if(categories.get(i).getName().equalsIgnoreCase(name)){
+                searchByCate.add(categories.get(i));
+            }
+        }
+        return searchByCate;
+    }
+
+    //
+    public Category getCategoryId(String id){
+        for (int i = 0; i < categories.size(); i++) {
+            Category catId = categories.get(i);
+            if(catId.getId().equalsIgnoreCase(id)){
+                return catId;
+            }
+        }
+        return null;
     }
 }

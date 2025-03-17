@@ -52,5 +52,12 @@ public class CategoryController {
         categoryService.deleteCategory(id);
         return ResponseEntity.status(200).body(new ApiResponse("Deleted Category , Thank you"));
         }
+
+
+    //SEARCH BY CATEGORY
+    @GetMapping("/search/{name}")
+    public ResponseEntity searchByCate(@PathVariable String name){
+        return ResponseEntity.status(200).body(categoryService.searchByCategory(name));
+    }
     }
 

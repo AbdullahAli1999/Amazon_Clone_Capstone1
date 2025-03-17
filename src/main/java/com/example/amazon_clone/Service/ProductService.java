@@ -1,13 +1,17 @@
 package com.example.amazon_clone.Service;
 
 import com.example.amazon_clone.Api.ApiResponse;
+import com.example.amazon_clone.Model.Category;
 import com.example.amazon_clone.Model.Product;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
+    private final CategoryService categoryService;
     ArrayList<Product> products = new ArrayList<>();
 
     //GET
@@ -17,13 +21,18 @@ public class ProductService {
 
     //ADD
     public boolean addProduct(Product product){
+
+        Category c = categoryService.getCategoryId(product.getCategoryID());
         for (int i = 0; i < products.size(); i++) {
-            if(products.get(i).getId().equalsIgnoreCase(product.getId())){
+            if (products.get(i).getId().equalsIgnoreCase(product.getId())) {
                 return false;
             }
-
         }
-        products.add(product);
+        if(c.getId().equalsIgnoreCase(product.getCategoryID())){
+            products.add(product);
+            return true;
+        }
+//        products.add(product);
         return true;
     }
 
@@ -58,4 +67,6 @@ public class ProductService {
         }
         return null;
     }
+
+
 }
