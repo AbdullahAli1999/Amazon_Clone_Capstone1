@@ -96,9 +96,18 @@ public class ProductService {
         }
         return bestSellers;
 
-
     }
 
+    public boolean rateProduct(double rateProduct, String pid){
+        for (int i = 0; i < products.size(); i++) {
+            Product porductRate = products.get(i);
+            if(porductRate.getId().equalsIgnoreCase(pid)){
+                porductRate.setProductRate(rateProduct);
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 

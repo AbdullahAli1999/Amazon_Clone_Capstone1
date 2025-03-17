@@ -65,4 +65,12 @@ public class ProductController {
         return ResponseEntity.status(200).body(bestSellers);
     }
 
+    @PutMapping("/rate/{pid}/{rate}")
+    public ResponseEntity productRate(@PathVariable double rate, @PathVariable String pid){
+        if(productService.rateProduct(rate,pid)){
+            return ResponseEntity.status(200).body("Great the rate successful");
+        }
+        return ResponseEntity.status(400).body(new ApiResponse("not found"));
+    }
+
 }

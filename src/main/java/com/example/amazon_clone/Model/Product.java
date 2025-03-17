@@ -1,9 +1,6 @@
 package com.example.amazon_clone.Model;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -21,4 +18,7 @@ public class Product {
     @NotEmpty(message = "the categoryID can not be empty")
     private String categoryID;
     private int bestSeller;
+    //@Min(1)
+    @Max(value = 10 , message = "The rete must be 10 or less than 10")
+    private double productRate;
 }
