@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @RestController
@@ -63,5 +64,11 @@ public class UserController {
     public ResponseEntity discountByCoupon(@PathVariable String userID, @PathVariable String productID, @PathVariable double coupon){
         userService.putCoupon(userID,productID,coupon);
         return ResponseEntity.status(200).body(new ApiResponse("Discount completed , Thank you"));
+    }
+
+    @GetMapping("{userId}/orders")
+    public ResponseEntity<ArrayList<LocalDate>> getOrderHistory(@PathVariable String userId){
+        ArrayList<LocalDate> localDates = userService.getOrderHistroy(userId);
+        return ResponseEntity.status(200).body(localDates);
     }
 }

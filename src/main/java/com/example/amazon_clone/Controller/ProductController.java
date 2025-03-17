@@ -53,4 +53,16 @@ public class ProductController {
         return ResponseEntity.status(200).body(new ApiResponse("Deleted Product, Thank you"));
     }
 
+    @GetMapping("/products/sortedByPrice")
+    public ResponseEntity<ArrayList> getProductSortedByPrice(){
+        ArrayList<Product> sortedProducts = productService.getProductSortedByPrice();
+        return ResponseEntity.status(200).body(sortedProducts);
+    }
+
+    @GetMapping("/best-sellers/{bestSeller}")
+    public ResponseEntity<ArrayList<Product>> getBestSellers(@PathVariable int bestSeller) {
+        ArrayList<Product> bestSellers = productService.getBestSellers(bestSeller);
+        return ResponseEntity.status(200).body(bestSellers);
+    }
+
 }

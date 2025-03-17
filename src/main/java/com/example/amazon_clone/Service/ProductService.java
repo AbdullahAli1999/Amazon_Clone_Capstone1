@@ -3,15 +3,18 @@ package com.example.amazon_clone.Service;
 import com.example.amazon_clone.Api.ApiResponse;
 import com.example.amazon_clone.Model.Category;
 import com.example.amazon_clone.Model.Product;
+import com.example.amazon_clone.Model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final CategoryService categoryService;
+   // private final UserService userService;
     ArrayList<Product> products = new ArrayList<>();
 
     //GET
@@ -67,6 +70,39 @@ public class ProductService {
         }
         return null;
     }
+
+    public ArrayList<Product> getProductSortedByPrice(){
+        ArrayList<Product> sortedProduct = new ArrayList<>(products);
+        for (int i = 0; i < sortedProduct.size(); i++) {
+            for (int j = i + 1; j < sortedProduct.size(); j++) {
+                if(sortedProduct.get(i).getPrice() > sortedProduct.get(j).getPrice()){
+                    Product temp = sortedProduct.get(i);
+                    sortedProduct.set(i,sortedProduct.get(j));
+                    sortedProduct.set(j,temp);
+                }
+
+            }
+
+        }
+        return sortedProduct;
+    }
+    public ArrayList<Product> getBestSellers(int bestSeller) {
+        ArrayList<Product> bestSellers = new ArrayList<>();
+        for (int i = 0; i < products.size(); i++) {
+            Product bestS = products.get(i);
+            if(bestS.getBestSeller() >= bestSeller){
+                bestSellers.add(bestS);
+            }
+        }
+        return bestSellers;
+
+
+    }
+
+
+
+
+
 
 
 }

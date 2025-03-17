@@ -7,6 +7,7 @@ import com.example.amazon_clone.Model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Service
@@ -56,6 +57,16 @@ public class UserService {
             }
         }
         return false;
+    }
+    //id
+    public User getUserId(String userId){
+        for (int i = 0; i < users.size(); i++) {
+            User uid = users.get(i);
+            if(uid.getId().equalsIgnoreCase(userId)){
+                return uid;
+            }
+        }
+        return null;
     }
 
     public boolean buyProudct(String userId , String productId, String merchantId , double take){
@@ -110,5 +121,15 @@ public class UserService {
             }
         }
         return false;
+    }
+
+    public ArrayList<LocalDate> getOrderHistroy(String userId){
+        for (int i = 0; i < users.size(); i++) {
+            User uHistory = users.get(i);
+            if(uHistory.getId().equalsIgnoreCase(userId)){
+                return uHistory.getOrderHistory();
+            }
+        }
+        return new ArrayList<>();
     }
 }

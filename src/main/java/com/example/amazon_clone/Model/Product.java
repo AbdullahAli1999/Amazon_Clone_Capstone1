@@ -20,4 +20,5 @@ public class Product {
     private double price;
     @NotEmpty(message = "the categoryID can not be empty")
     private String categoryID;
+    private int bestSeller;
 }

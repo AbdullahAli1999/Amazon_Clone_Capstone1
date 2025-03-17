@@ -4,6 +4,9 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 @Data
 @AllArgsConstructor
 public class User {
@@ -24,4 +27,6 @@ public class User {
     @NotNull(message = "the balance can not be null")
     @Positive(message = "just positive numbers<")
     private double balance;
+    private ArrayList<LocalDate> orderHistory;
+
 }
