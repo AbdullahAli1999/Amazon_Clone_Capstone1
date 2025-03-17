@@ -21,4 +21,5 @@ public class Product {
     //@Min(1)
     @Max(value = 10 , message = "The rete must be 10 or less than 10")
     private double productRate;
+    private String comment;
 }

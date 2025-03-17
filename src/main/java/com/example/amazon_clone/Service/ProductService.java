@@ -111,6 +111,16 @@ public class ProductService {
 
 
 
+    public boolean addComment(String comment, String pid){
+        for (int i = 0; i < products.size(); i++) {
+            Product productComment = products.get(i);
+            if(productComment.getId().equalsIgnoreCase(pid));
+            productComment.setComment(comment);
+            return true;
+
+        }
+        return false;
+    }
 
 
 

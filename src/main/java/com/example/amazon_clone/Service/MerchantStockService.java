@@ -80,4 +80,15 @@ public class MerchantStockService {
         }
         return null;
     }
+
+//    public String requestRestock(int merchantId, int productId, int requestedStock) {
+//        for (MerchantStock stock : merchantStocks) {
+//            if (stock.getMerchantId().equals(String.valueOf(merchantId)) && stock.getProductId().equals(String.valueOf(productId))) {
+//                stock.setStock(stock.getStock() + requestedStock);
+//                return "Restock request processed successfully.";
+//            }
+//        }
+//        return "Merchant or product not found.";
+//    }
 }
+
