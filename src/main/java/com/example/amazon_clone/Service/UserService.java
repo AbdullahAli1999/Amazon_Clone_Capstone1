@@ -93,6 +93,7 @@ public class UserService {
                 if(price.getPrice() < balance.getBalance()){
                     double newbalance =  balance.getBalance() - price.getPrice() * take;
                     balance.setBalance(newbalance);
+                    price.setBestSeller(price.getBestSeller() + (int) take);
                     return true;
                 }
             }
