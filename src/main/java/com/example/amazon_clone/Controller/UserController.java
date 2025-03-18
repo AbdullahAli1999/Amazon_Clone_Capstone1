@@ -61,7 +61,7 @@ public class UserController {
         return ResponseEntity.status(200).body(new ApiResponse("paid product , thank you"));
     }
     @PutMapping("/dis/{userID}/{productID}/{coupon}")
-    public ResponseEntity discountByCoupon(@PathVariable String userID, @PathVariable String productID, @PathVariable double coupon){
+    public ResponseEntity discountByCoupon(@PathVariable String userID, @PathVariable String productID, @PathVariable String coupon){
         userService.putCoupon(userID,productID,coupon);
         return ResponseEntity.status(200).body(new ApiResponse("Discount completed , Thank you"));
     }

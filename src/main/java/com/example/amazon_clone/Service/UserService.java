@@ -102,9 +102,16 @@ public class UserService {
 
     //COUPON
 
-    public boolean putCoupon(String userID , String productId, double coupon){
+    public boolean putCoupon(String userID , String productId, String coupon){
+        double dis1 = 100;
+      if(coupon.equalsIgnoreCase("Coupon1")){
+           dis1 = 20;
+
+      }  if(coupon.equalsIgnoreCase("Coupon2")){
+             dis1 = 50;
+
+        }
         ArrayList<Product> p = productService.getProducts();
-        Product pid = productService.getProductID(productId);
         for (int i = 0; i < users.size(); i++) {
             User userC = users.get(i);
 
@@ -112,7 +119,7 @@ public class UserService {
                 Product prodC = p.get(j);
 
                 if(userC.getId().equalsIgnoreCase(userID) && prodC.getId().equalsIgnoreCase(productId)){
-                    double newPrice =prodC.getPrice() * (coupon/100) ;
+                    double newPrice =prodC.getPrice() * (dis1/100) ;
                     if(newPrice < 0) newPrice = 0;
 
                     prodC.setPrice(newPrice);
